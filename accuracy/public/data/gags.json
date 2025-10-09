@@ -1,0 +1,492 @@
+[
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Feather",
+    "Damage": 10,
+    "OrgDamage": 12,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Feather",
+    "Resource": "source/inventory_feather.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Megaphone",
+    "Damage": 18,
+    "OrgDamage": 22,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Megaphone",
+    "Resource": "source/inventory_megaphone.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Lipstick",
+    "Damage": 30,
+    "OrgDamage": 36,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Lipstick",
+    "Resource": "source/inventory_lipstick.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Bamboo Cane",
+    "Damage": 45,
+    "OrgDamage": 54,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Cane",
+    "Resource": "source/inventory_bamboo_cane.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Pixie Dust",
+    "Damage": 60,
+    "OrgDamage": 72,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Dust",
+    "Resource": "source/inventory_pixiedust.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "Juggling Cubes",
+    "Damage": 105,
+    "OrgDamage": 126,
+    "Accuracy": 70,
+    "Stun": 0,
+    "Shorthand": "Juggles",
+    "Resource": "source/inventory_juggling_cubes.png"
+  },
+  {
+    "GagType": "Toon-Up",
+    "GagName": "High Dive",
+    "Damage": 210,
+    "OrgDamage": 252,
+    "Accuracy": 95,
+    "Stun": 0,
+    "Shorthand": "Dive",
+    "Resource": "source/inventory_ladder.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Banana",
+    "Damage": 12,
+    "OrgDamage": 14,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Banana",
+    "Resource": "source/inventory_bannana_peel.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Rake",
+    "Damage": 20,
+    "OrgDamage": 22,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Rake",
+    "Resource": "source/inventory_rake.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Marbles",
+    "Damage": 35,
+    "OrgDamage": 39,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Marble",
+    "Resource": "source/inventory_marbles.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Quicksand",
+    "Damage": 50,
+    "OrgDamage": 55,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Quicksand",
+    "Resource": "source/inventory_quicksand_icon.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Trapdoor",
+    "Damage": 85,
+    "OrgDamage": 94,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Trapdoor",
+    "Resource": "source/inventory_trapdoor.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "TNT",
+    "Damage": 180,
+    "OrgDamage": 198,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "TNT",
+    "Resource": "source/inventory_tnt.png"
+  },
+  {
+    "GagType": "Trap",
+    "GagName": "Railroad",
+    "Damage": 200,
+    "OrgDamage": 220,
+    "Accuracy": 0,
+    "Stun": 50,
+    "Shorthand": "Train",
+    "Resource": "source/inventory_traintracks.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "$1 Bill",
+    "Damage": 60,
+    "OrgDamage": 70,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "1$ Bill",
+    "Resource": "source/inventory_1dollarbill.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "Small Magnet",
+    "Damage": 55,
+    "OrgDamage": 65,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "Mini Mag",
+    "Resource": "source/inventory_small_magnet.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "$5 Bill",
+    "Damage": 70,
+    "OrgDamage": 80,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "$5 Bill",
+    "Resource": "source/inventory_5dollarbill.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "Big Magnet",
+    "Damage": 65,
+    "OrgDamage": 75,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "Big Mag",
+    "Resource": "source/inventory_big_magnet.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "$10 Bill",
+    "Damage": 80,
+    "OrgDamage": 90,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "$10 Bill",
+    "Resource": "source/inventory_10dollarbill.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "Hypno-goggles",
+    "Damage": 75,
+    "OrgDamage": 85,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "Hypnos",
+    "Resource": "source/inventory_hypno_goggles.png"
+  },
+  {
+    "GagType": "Lure",
+    "GagName": "Presentation",
+    "Damage": 90,
+    "OrgDamage": 100,
+    "Accuracy": 0,
+    "Stun": 0,
+    "Shorthand": "Pres",
+    "Resource": "source/inventory_screen.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Bike Horn",
+    "Damage": 4,
+    "OrgDamage": 5,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Bike Horn",
+    "Resource": "source/inventory_bikehorn.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Whistle",
+    "Damage": 7,
+    "OrgDamage": 8,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Whistle",
+    "Resource": "source/inventory_whistle.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Bugle",
+    "Damage": 11,
+    "OrgDamage": 13,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Bugle",
+    "Resource": "source/inventory_bugle.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Aoogah",
+    "Damage": 16,
+    "OrgDamage": 18,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Aoogah",
+    "Resource": "source/inventory_aoogah.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Elephant Trunk",
+    "Damage": 21,
+    "OrgDamage": 24,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Trunk",
+    "Resource": "source/inventory_elephant.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Fog Horn",
+    "Damage": 50,
+    "OrgDamage": 55,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Fog",
+    "Resource": "source/inventory_fog_horn.png"
+  },
+  {
+    "GagType": "Sound",
+    "GagName": "Opera Singer",
+    "Damage": 90,
+    "OrgDamage": 99,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Opera",
+    "Resource": "source/inventory_opera_singer.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Cupcake",
+    "Damage": 6,
+    "OrgDamage": 7,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "Cupcake",
+    "Resource": "source/inventory_cup_cake.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Fruit Pie Slice",
+    "Damage": 10,
+    "OrgDamage": 11,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "F Slice",
+    "Resource": "source/inventory_fruit_pie_slice.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Cream Pie Slice",
+    "Damage": 17,
+    "OrgDamage": 19,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "C Slice",
+    "Resource": "source/inventory_cream_pie_slice.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Whole Fruit Pie",
+    "Damage": 27,
+    "OrgDamage": 30,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "Fruit",
+    "Resource": "source/inventory_fruitpie.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Whole Cream Pie",
+    "Damage": 40,
+    "OrgDamage": 44,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "Cream",
+    "Resource": "source/inventory_creampie.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Birthday Cake",
+    "Damage": 100,
+    "OrgDamage": 110,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "Bday",
+    "Resource": "source/inventory_cake.png"
+  },
+  {
+    "GagType": "Throw",
+    "GagName": "Wedding Cake",
+    "Damage": 120,
+    "OrgDamage": 132,
+    "Accuracy": 75,
+    "Stun": 25,
+    "Shorthand": "Wedding",
+    "Resource": "source/inventory_wedding.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Squirting Flower",
+    "Damage": 4,
+    "OrgDamage": 5,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Flower",
+    "Resource": "source/inventory_squirt_flower.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Glass of Water",
+    "Damage": 8,
+    "OrgDamage": 10,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Glass",
+    "Resource": "source/inventory_glass_of_water.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Squirt Gun",
+    "Damage": 12,
+    "OrgDamage": 14,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Gun",
+    "Resource": "source/inventory_water_gun.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Seltzer Bottle",
+    "Damage": 21,
+    "OrgDamage": 25,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Seltzer",
+    "Resource": "source/inventory_seltzer_bottle.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Fire Hose",
+    "Damage": 30,
+    "OrgDamage": 35,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Hose",
+    "Resource": "source/inventory_firehose.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Storm Cloud",
+    "Damage": 80,
+    "OrgDamage": 92,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Cloud",
+    "Resource": "source/inventory_storm_cloud.png"
+  },
+  {
+    "GagType": "Squirt",
+    "GagName": "Geyser",
+    "Damage": 105,
+    "OrgDamage": 121,
+    "Accuracy": 95,
+    "Stun": 25,
+    "Shorthand": "Geyser",
+    "Resource": "source/inventory_geyser.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Flower Pot",
+    "Damage": 10,
+    "OrgDamage": 12,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Pot",
+    "Resource": "source/inventory_flower_pot.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Sandbag",
+    "Damage": 18,
+    "OrgDamage": 21,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Sandbag",
+    "Resource": "source/inventory_sandbag.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Anvil",
+    "Damage": 30,
+    "OrgDamage": 35,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Anvil",
+    "Resource": "source/inventory_anvil.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Big Weight",
+    "Damage": 45,
+    "OrgDamage": 52,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Anvil",
+    "Resource": "source/inventory_weight.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Safe",
+    "Damage": 70,
+    "OrgDamage": 81,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Safe",
+    "Resource": "source/inventory_safe_box.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Grand Piano",
+    "Damage": 170,
+    "OrgDamage": 196,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Piano",
+    "Resource": "source/inventory_piano.png"
+  },
+  {
+    "GagType": "Drop",
+    "GagName": "Toontanic",
+    "Damage": 180,
+    "OrgDamage": 207,
+    "Accuracy": 50,
+    "Stun": 25,
+    "Shorthand": "Toontanic",
+    "Resource": "source/inventory_ship.png"
+  }
+]

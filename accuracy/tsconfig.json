@@ -1,0 +1,12 @@
+{
+  "extends": "@motion-canvas/2d/tsconfig.project.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true
+  },
+  "resolveJsonModule": true,
+  "esModuleInterop": true
+}
