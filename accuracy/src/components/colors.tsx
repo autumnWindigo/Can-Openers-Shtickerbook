@@ -25,6 +25,7 @@ export const CatppuccinColors = {
   Base: '#1e1e2e',
   Mantle: '#181825',
   Crust: '#11111b',
+  LatteBase: '#eff1f5'
 } as const;
 
 export type ColorName = keyof typeof CatppuccinColors;

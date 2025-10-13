@@ -1,5 +1,5 @@
 import { makeScene2D, Rect, Spline, Txt } from "@motion-canvas/2d";
-import { all, createRef,  waitFor } from "@motion-canvas/core";
+import { all, createRef,  easeOutCubic,  waitFor } from "@motion-canvas/core";
 import { CatppuccinColors } from "../components/colors";
 import { AnimationPresets } from "../components/animations";
 
@@ -25,10 +25,9 @@ export default makeScene2D(function* (view) {
         fontSize={35}
         y={-500}
         x={-680}
-        opacity={100}
         zIndex={999}
+        opacity={100}
       />
-
       <Rect
         ref={formulaRef}
         layout
@@ -110,7 +109,7 @@ export default makeScene2D(function* (view) {
 
 
   yield * AnimationPresets.fadeInUp(formulaRef())
-  yield * formulaRef().position.y(-300, 1)
+  yield * formulaRef().position.y(-300, 0.5)
 
   // Reveal Total Accuracy
   const totalAccuracy = yield* revealLabelWithLine({
@@ -187,20 +186,36 @@ export default makeScene2D(function* (view) {
   yield * waitFor(1)
 
   yield* all(
-    atkAcc().opacity(0.4, 0.5),
-    bonus().opacity(0.4, 0.5),
     trackExp().opacity(0.4, 0.5),
-    tgtDef().opacity(0.4, 0.5),
-    totalAccuracy.txtRef().opacity(0.4, 0.5),
     trackMastery.txtRef().opacity(0.4, 0.5),
-    cogDefence.txtRef().opacity(0.4, 0.5),
-    stunLTB.txtRef().opacity(0.4, 0.5),
-    totalAccuracy.lineRef().opacity(0.4, 0.5),
     trackMastery.lineRef().opacity(0.4, 0.5),
+
+    tgtDef().opacity(0.4, 0.5),
+    cogDefence.txtRef().opacity(0.4, 0.5),
     cogDefence.lineRef().opacity(0.4, 0.5),
+
+    bonus().opacity(0.4, 0.5),
+    stunLTB.txtRef().opacity(0.4, 0.5),
     stunLTB.lineRef().opacity(0.4, 0.5),
-    propAcc().scale(1.2, 0.5).to(1, 0.3),
-    baseGagAccuracy.txtRef().scale(1.2, 0.5).to(1, 0.3),
+);
+
+  yield * waitFor(1)
+
+  yield* all(
+    atkAcc().opacity(0.4, 0.5),
+    totalAccuracy.txtRef().opacity(0.4, 0.5),
+    totalAccuracy.lineRef().opacity(0.4, 0.5),
+
+    propAcc().opacity(0.4, 0.5),
+    baseGagAccuracy.txtRef().opacity(0.4, 0.5),
+    baseGagAccuracy.lineRef().opacity(0.4, 0.5),
+
+    trackExp().opacity(1, 0.2),
+    trackMastery.txtRef().opacity(1, 0.2),
+    trackMastery.lineRef().opacity(1, 0.2),
+
+    trackExp().scale(1.2, 0.5).to(1, 0.3),
+    trackMastery.txtRef().scale(1.2, 0.5).to(1, 0.3),
 );
 
   const fadeRectRef = createRef<Rect>();
@@ -217,9 +232,6 @@ export default makeScene2D(function* (view) {
 
   yield * waitFor(1)
   yield * AnimationPresets.fadeInStill(fadeRectRef())
-
-
-
 });
 
 export function* revealLabelWithLine({
@@ -273,10 +285,13 @@ export function* revealLabelWithLine({
 
   // Animate in
   yield* all(
-    lineRef().start(0, 0.5),
-    lineRef().end(1, 0.5),
-    target.fill(color, 0.5),
-    AnimationPresets.fadeInUp(txtRef())
+    lineRef().start(0, 0.2),
+    lineRef().end(1, 0.2),
+    target.fill(color, 0.2),
+    AnimationPresets.fadeInUp(txtRef(), {
+      duration: 0.2,
+      easing: easeOutCubic
+    })
   );
 
   return {txtRef, lineRef};

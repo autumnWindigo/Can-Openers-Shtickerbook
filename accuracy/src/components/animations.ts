@@ -94,7 +94,30 @@ export class AnimationPresets {
       node.opacity(0, duration, easing),
       node.position.y(node.position.y() - 100, duration * 0.8, easing)
     )
+    yield *node.position.y(node.position.y() + 100, duration * 0.01, easing)
   }
+
+  public static *fadeOutDown(node: Node, config: AnimationConfig = {}) {
+    const {
+      duration = this.DEFAULT_DURATION,
+      delay = this.DEFAULT_DELAY,
+      easing = easeOutCubic,
+    } = config;
+
+    node.opacity(1);
+
+    // Wait for initial delay if specified
+    if (delay > 0) {
+      yield* waitFor(delay);
+    }
+
+    yield* all(
+      node.opacity(0, duration, easing),
+      node.position.y(node.position.y() + 100, duration * 0.8, easing)
+    )
+    yield *node.position.y(node.position.y() - 100, duration * 0.1, easing)
+  }
+
   public static *fadeOutStill(node: Node, config: AnimationConfig = {}) {
     const {
       duration = this.DEFAULT_DURATION,

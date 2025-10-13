@@ -1,0 +1,164 @@
+{
+  "1": {
+    "Sellbot": {
+      "name": "Cold Caller",
+      "headshot": "/cogHeadshots/Cold Caller.png"
+    },
+    "Cashbot": {
+      "name": "Short Change",
+      "headshot": "/cogHeadshots/Short Change.png"
+    },
+    "Lawbot": {
+      "name": "Bottom Feeder",
+      "headshot": "/cogHeadshots/Bottom Feeder.png"
+    },
+    "Bossbot": {
+      "name": "Flunky",
+      "headshot": "/cogHeadshots/Flunky.png"
+    }
+  },
+  "2": {
+    "Sellbot": {
+      "name": "Telemarketer",
+      "headshot": "/cogHeadshots/Telemarketer.png"
+    },
+    "Cashbot": {
+      "name": "Penny Pincher",
+      "headshot": "/cogHeadshots/Penny Pincher.png"
+    },
+    "Lawbot": {
+      "name": "Bloodsucker",
+      "headshot": "/cogHeadshots/Bloodsucker.png"
+    },
+    "Bossbot": {
+      "name": "Pencil Pusher",
+      "headshot": "/cogHeadshots/Pencil Pusher.png"
+    }
+  },
+  "3": {
+    "Sellbot": {
+      "name": "Name Dropper",
+      "headshot": "/cogHeadshots/Name Dropper.png"
+    },
+    "Cashbot": {
+      "name": "Tightwad",
+      "headshot": "/cogHeadshots/Tightwad.png"
+    },
+    "Lawbot": {
+      "name": "Double Talker",
+      "headshot": "/cogHeadshots/Double Talker.png"
+    },
+    "Bossbot": {
+      "name": "Yesman",
+      "headshot": "/cogHeadshots/Yesman.png"
+    }
+  },
+  "4": {
+    "Sellbot": {
+      "name": "Glad Hander",
+      "headshot": "/cogHeadshots/Glad Hander.png"
+    },
+    "Cashbot": {
+      "name": "Bean Counter",
+      "headshot": "/cogHeadshots/Bean Counter.png"
+    },
+    "Lawbot": {
+      "name": "Ambulance Chaser",
+      "headshot": "/cogHeadshots/Ambulance Chaser.png"
+    },
+    "Bossbot": {
+      "name": "Micromanager",
+      "headshot": "/cogHeadshots/Micromanager.png"
+    }
+  },
+  "5": {
+    "Sellbot": {
+      "name": "Mover & Shaker",
+      "headshot": "/cogHeadshots/Mover & Shaker.png"
+    },
+    "Cashbot": {
+      "name": "Number Cruncher",
+      "headshot": "/cogHeadshots/Number Cruncher.png"
+    },
+    "Lawbot": {
+      "name": "Back Stabber",
+      "headshot": "/cogHeadshots/Back Stabber.png"
+    },
+    "Bossbot": {
+      "name": "Downsizer",
+      "headshot": "/cogHeadshots/Downsizer.png"
+    }
+  },
+  "6": {
+    "Sellbot": {
+      "name": "Two-Face",
+      "headshot": "/cogHeadshots/Two-Face.png"
+    },
+    "Cashbot": {
+      "name": "Money Bags",
+      "headshot": "/cogHeadshots/Money Bags.png"
+    },
+    "Lawbot": {
+      "name": "Spin Doctor",
+      "headshot": "/cogHeadshots/Spin Doctor.png"
+    },
+    "Bossbot": {
+      "name": "Head Hunter",
+      "headshot": "/cogHeadshots/Head Hunter.png"
+    }
+  },
+  "7": {
+    "Sellbot": {
+      "name": "The Mingler",
+      "headshot": "/cogHeadshots/The Mingler.png"
+    },
+    "Cashbot": {
+      "name": "Loan Shark",
+      "headshot": "/cogHeadshots/Loan Shark.png"
+    },
+    "Lawbot": {
+      "name": "Legal Eagle",
+      "headshot": "/cogHeadshots/Legal Eagle.png"
+    },
+    "Bossbot": {
+      "name": "Corporate Raider",
+      "headshot": "/cogHeadshots/Corporate Raider.png"
+    }
+  },
+  "8": {
+    "Sellbot": {
+      "name": "Mr. Hollywood",
+      "headshot": "/cogHeadshots/Mr. Hollywood.png"
+    },
+    "Cashbot": {
+      "name": "Robber Baron",
+      "headshot": "/cogHeadshots/Robber Baron.png"
+    },
+    "Lawbot": {
+      "name": "Big Wig",
+      "headshot": "/cogHeadshots/Big Wig.png"
+    },
+    "Bossbot": {
+      "name": "The Big Cheese",
+      "headshot": "/cogHeadshots/The Big Cheese.png"
+    }
+  },
+  "9": {
+    "Sellbot": {
+      "name": "The Factory Foreman",
+      "headshot": "/cogHeadshots/The Factory Foreman.png"
+    },
+    "Cashbot": {
+      "name": "The Mint Auditor",
+      "headshot": "/cogHeadshots/The Mint Auditor.png"
+    },
+    "Lawbot": {
+      "name": "The Office Clerk",
+      "headshot": "/cogHeadshots/The Office Clerk.png"
+    },
+    "Bossbot": {
+      "name": "The Club President",
+      "headshot": "/cogHeadshots/The Club President.png"
+    }
+  }
+}

@@ -1,42 +1,43 @@
 import { makeScene2D, Spline, Txt } from "@motion-canvas/2d";
-import { all, createRef, delay, easeOutCubic, fadeTransition, range, sequence, waitFor } from "@motion-canvas/core";
-import type { Reference } from "@motion-canvas/core";
+import { all, createRef, Reference, sequence, waitFor } from "@motion-canvas/core";
 import { Pill } from "../components/Pill";
 import { Gag } from "../components/Gag";
 import gagsJson from "../data/gags.json";
-import { AnimationPresets } from "../components/animations";
 import { CatppuccinColors } from "../components/colors";
+import { AnimationPresets } from "../components/animations";
 
 export default makeScene2D(function* (view) {
   // Create your animations here
 
   const pills: Reference<Pill>[] = [];
   const gags: Gag[] = gagsJson;
-  const toonUpGags = gags.filter((gag) => gag.GagType === "Toon-Up");
+  const soundGags = gags.filter((gag) => gag.GagType === "Sound");
 
-  for (let i = 0; i < toonUpGags.length; i++) {
+  for (let i = 0; i < soundGags.length; i++) {
     pills.push(createRef<Pill>());
   }
 
-  pills.forEach((ref, i) => {
-    view.add(
-      <Pill
-        ref={ref}
-        x={0}
-        y={700}
-        radius={45}
-        fill={CatppuccinColors.Mauve}
-        text={toonUpGags[i].GagName}
-        imgSrc={toonUpGags[i].Resource}
-      />,
-    );
-  });
-
   const title = createRef<Txt>();
+  const subTitle = createRef<Txt>();
   const currentGagTrackRef = createRef<Txt>();
+  const lineRefTop = createRef<Spline>();
+  const lineRefBottom = createRef<Spline>();
+  const accuracyNote = createRef<Txt>();
   const logo = createRef<Txt>();
+
   view.add(
     <>
+      {pills.map((ref, i) => (
+        <Pill
+          ref={ref}
+          x={0}
+          y={700}
+          radius={45}
+          fill={CatppuccinColors.Blue}
+          text={soundGags[i].GagName}
+          imgSrc={soundGags[i].Resource}
+        />
+      ))}
       <Txt
         ref={logo}
         text="Can Opener's Shtickerbook"
@@ -46,12 +47,12 @@ export default makeScene2D(function* (view) {
         fontSize={35}
         y={-500}
         x={-680}
-        opacity={100}
         zIndex={999}
+        opacity={100}
       />
       <Txt
         ref={title}
-        x={-450}
+        x={-480}
         y={0}
         text="Track"
         fill={CatppuccinColors.Text}
@@ -63,37 +64,30 @@ export default makeScene2D(function* (view) {
         ref={currentGagTrackRef}
         x={-680}
         y={0}
-        text="Toon-Up"
-        fill={CatppuccinColors.Mauve}
+        text="Sound"
+        fill={CatppuccinColors.Blue}
         fontWeight={700}
         fontFamily="twilio sans mono"
         fontSize={60}
+        opacity={0}
       />,
+      <Txt
+        ref={subTitle}
+        x={-pills[0]().getWidth() - 525}
+        y={100}
+        text="Base Gag Accuracy"
+        fill={CatppuccinColors.Peach}
+        fontWeight={500}
+        fontFamily="twilio sans mono"
+        fontSize={40}
+        opacity={100}
+      />
     </>
-  );
-
-  const subTitle = createRef<Txt>();
-  view.add(
-    <Txt
-      ref={subTitle}
-      x={-pills[0]().getWidth() - 525}
-      y={100}
-      text="Base Gag Accuracy"
-      fill={CatppuccinColors.Peach}
-      fontWeight={500}
-      fontFamily="twilio sans mono"
-      fontSize={40}
-      opacity={0}
-    />,
-  );
-
-  // Load pills & Title
-  yield * all (
-    AnimationPresets.fadeInUp(title()),
-    AnimationPresets.fadeInUp(currentGagTrackRef()),
-    AnimationPresets.fadeInUp(subTitle())
   )
 
+  yield * AnimationPresets.fadeInDown(currentGagTrackRef())
+
+  // Load Pills
   yield * sequence (
     0.2,
     ...pills.map((p, i) => all(
@@ -104,72 +98,60 @@ export default makeScene2D(function* (view) {
 
   yield * waitFor(1)
 
-  // Change to Accuracy and load subtitle
+  // Swap to Accuracy Numbers
   yield * all (
-    ...pills.map((p, i) => p().setText(String(toonUpGags[i].Accuracy) + "%", 150))
+    ...pills.map((p, i) => p().setText(String(soundGags[i].Accuracy) + "%", 150)),
   );
 
   yield * waitFor(1)
 
-  // Highlight same Accuracy
-  yield * all(
-    ...pills.slice(0, -1).map(p => p().setColor(CatppuccinColors.Pink, 1))
-  )
-
-  const lineRefTop = createRef<Spline>();
   view.add(
+  <>
     <Spline
       ref={lineRefTop}
       points={[
         [pills[0]().position.x() + pills[0]().getWidth() + 10, pills[0]().position.y()],
         [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[0]().position.y()],
-        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[2]().position.y()],
+        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[3]().position.y() - 75],
       ]}
       stroke={CatppuccinColors.Text}
       lineWidth={8}
       smoothness={0}
       end={0}
     />
-  )
-
-  const lineRefBottom = createRef<Spline>();
-  view.add(
     <Spline
       ref={lineRefBottom}
       points={[
-        [pills[0]().position.x() + pills[0]().getWidth() + 10, pills[5]().position.y()],
-        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[5]().position.y()],
-        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[3]().position.y()],
+        [pills[0]().position.x() + pills[0]().getWidth() + 10, pills[6]().position.y()],
+        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[6]().position.y()],
+        [pills[0]().position.x() + pills[0]().getWidth() + 50, pills[3]().position.y() + 75],
       ]}
       stroke={CatppuccinColors.Text}
       lineWidth={8}
       smoothness={0}
       end={0}
     />
-  );
-
-  const accracyNote = createRef<Txt>();
-  view.add(
     <Txt
-      ref={accracyNote}
+      ref={accuracyNote}
       x={pills[0]().position.x() + pills[0]().getWidth() + 300}
-      y={pills[3]().y() - 55}
+      y={pills[3]().y() }
       text="Same Accuracy"
       fill={CatppuccinColors.Text}
       fontWeight={400}
       fontFamily="twilio sans mono"
       fontSize={40}
     />,
-  );
+  </>
+  )
 
-  // Note & Line on same accuracy
   yield * all(
     lineRefTop().start(0, 1.5),
     lineRefTop().end(1, 1.5),
     lineRefBottom().start(0, 1.5),
     lineRefBottom().end(1, 1.5),
-    AnimationPresets.fadeInStill(accracyNote()),
-    accracyNote().position.x(pills[0]().position.x() + pills[0]().getWidth() + 200, 0.5)
+    AnimationPresets.fadeInStill(accuracyNote()),
+    accuracyNote().position.x(pills[0]().position.x() + pills[0]().getWidth() + 150, 0.5),
+    ...pills.map((p) => p().setColor(CatppuccinColors.Sky, 1.5)),
   );
 
   yield * waitFor(1)
@@ -179,12 +161,8 @@ export default makeScene2D(function* (view) {
     lineRefTop().end(0, 1),
     lineRefBottom().start(0, 1),
     lineRefBottom().end(0, 1),
-    AnimationPresets.fadeOutStill(accracyNote()),
-  )
-
-  // Clean it all up
-  yield * all(
-    ...pills.slice(0, -1).map(p => p().setColor(CatppuccinColors.Mauve, 0.5)),
+    AnimationPresets.fadeOutStill(accuracyNote()),
+    ...pills.map((p) => p().setColor(CatppuccinColors.Blue, 1.5)),
   )
 
   yield * sequence( 0.05,
@@ -194,8 +172,6 @@ export default makeScene2D(function* (view) {
     ))
   )
 
-  yield * all (
-    AnimationPresets.fadeOutUp(currentGagTrackRef()),
-    title().position.x(title().position.x() - 40, 0.5, easeOutCubic)
-  )
-});
+  yield * AnimationPresets.fadeOutUp(currentGagTrackRef())
+
+})

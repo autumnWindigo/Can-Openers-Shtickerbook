@@ -1,5 +1,5 @@
 import { Node, Circle, Rect, initial, signal, NodeProps, Img, Txt } from '@motion-canvas/2d';
-import { SignalValue, createSignal, all, Reference, createRef } from '@motion-canvas/core';
+import { SignalValue, createSignal, all, Reference, createRef, easeOutCubic } from '@motion-canvas/core';
 
 export interface PillProps extends NodeProps {
   radius?: SignalValue<number>;
@@ -99,9 +99,9 @@ export class Pill extends Node {
 
   public *expand(amount: number, duration = 1) {
     yield* all(
-      this.leftX(-amount / 2, duration),
-      this.rightX(amount / 2, duration),
-      this.rectWidth(amount, duration)
+      this.leftX(-amount / 2, duration, easeOutCubic),
+      this.rightX(amount / 2, duration, easeOutCubic),
+      this.rectWidth(amount, duration, easeOutCubic)
     );
   }
 
