@@ -1,5 +1,5 @@
-import { Node } from "@motion-canvas/2d";
-import { all, easeOutCubic, TimingFunction, waitFor } from "@motion-canvas/core";
+import { Node, Txt } from "@motion-canvas/2d";
+import { all, easeOutCubic, Reference, TimingFunction, waitFor } from "@motion-canvas/core";
 
 export interface AnimationConfig {
   duration?: number;
@@ -133,5 +133,16 @@ export class AnimationPresets {
     }
 
     yield* node.opacity(0, duration, easing);
+  }
+
+
+  public static *typeText(textRef: Reference<Txt>, content: string, duration: number = 1) {
+    const perChar = duration / content.length;
+    textRef().text('');
+
+    for (let i = 0; i < content.length; i++) {
+      textRef().text(textRef().text() + content[i]);
+      yield * waitFor(perChar);
+    }
   }
 }

@@ -148,7 +148,7 @@ export default makeScene2D(function* (view) {
   // Reveal Cog Defence
   const cogDefence = yield* revealLabelWithLine({
     view,
-    label: "Cog Level",
+    label: "Cog Defence",
     target: tgtDef(),
     formulaRef,
     color: CatppuccinColors.Sky,
@@ -171,13 +171,13 @@ export default makeScene2D(function* (view) {
   view.add(
     <Txt
       ref={ltbTip}
-      text=" ⃰ Lure & Trap bonus only affect lure gags on the same turn."
+      text=" ⃰ Lure & Trap bonus only affect lure gags. Bonus also include SOS cards + buffs & debuffs."
       fill={CatppuccinColors.Mauve}
       fontWeight={400}
       fontFamily="twilio sans mono"
-      fontSize={40}
+      fontSize={35}
       y={480}
-      x={200}
+      x={0}
       opacity={0}
     />
   )
@@ -185,23 +185,6 @@ export default makeScene2D(function* (view) {
   yield * AnimationPresets.fadeInUp(ltbTip())
 
   yield * waitFor(1)
-
-  yield* all(
-    atkAcc().opacity(0.4, 0.5),
-    bonus().opacity(0.4, 0.5),
-    trackExp().opacity(0.4, 0.5),
-    tgtDef().opacity(0.4, 0.5),
-    totalAccuracy.txtRef().opacity(0.4, 0.5),
-    trackMastery.txtRef().opacity(0.4, 0.5),
-    cogDefence.txtRef().opacity(0.4, 0.5),
-    stunLTB.txtRef().opacity(0.4, 0.5),
-    totalAccuracy.lineRef().opacity(0.4, 0.5),
-    trackMastery.lineRef().opacity(0.4, 0.5),
-    cogDefence.lineRef().opacity(0.4, 0.5),
-    stunLTB.lineRef().opacity(0.4, 0.5),
-    propAcc().scale(1.2, 0.5).to(1, 0.3),
-    baseGagAccuracy.txtRef().scale(1.2, 0.5).to(1, 0.3),
-);
 
   const fadeRectRef = createRef<Rect>();
   view.add(

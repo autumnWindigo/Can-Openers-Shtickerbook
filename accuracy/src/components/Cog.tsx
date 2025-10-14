@@ -1,5 +1,5 @@
 import { Img, Node, NodeProps, Rect, Txt } from "@motion-canvas/2d";
-import { Center, createRef, Reference, sequence, Spacing } from "@motion-canvas/core";
+import { createRef, Reference } from "@motion-canvas/core";
 import cogInformation from "../data/cogDatabase.json";
 import { CatppuccinColors } from "./colors";
 import { AnimationPresets } from "./animations";
@@ -125,6 +125,7 @@ export class CogPanel extends Node {
         <Txt
           ref={this.nameRef}
           text={this.cogDatabase[this.suit][this.department].name}
+          fill={CatppuccinColors.Crust}
           fontSize={36}
           fontWeight={700}
           fontFamily="twilio sans mono"
@@ -134,6 +135,7 @@ export class CogPanel extends Node {
         <Txt
           ref={this.levelRef}
           text={"Level " + String(this.level)}
+          fill={CatppuccinColors.Crust}
           fontSize={36}
           fontWeight={600}
           fontFamily="twilio sans mono"
@@ -142,6 +144,7 @@ export class CogPanel extends Node {
         <Txt
           ref={this.defenceRef}
           text={"🛡 " + CogDefenceTable[this.level]}
+          fill={CatppuccinColors.Crust}
           fontSize={32}
           fontWeight={500}
           fontFamily="twilio sans mono"
@@ -151,6 +154,7 @@ export class CogPanel extends Node {
         <Txt
           ref={this.healthRef}
           text={"❤️ " + this.currentHealth + "/" + CogHealthTable[this.level]}
+          fill={CatppuccinColors.Crust}
           fontSize={32}
           fontWeight={500}
           fontFamily="twilio sans mono"
@@ -158,6 +162,7 @@ export class CogPanel extends Node {
         <Txt
           ref={this.stunRef}
           text={"💫 " + "0%"}
+          fill={CatppuccinColors.Crust}
           fontSize={32}
           fontWeight={500}
           fontFamily="twilio sans mono"

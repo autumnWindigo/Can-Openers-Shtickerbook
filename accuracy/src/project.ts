@@ -8,21 +8,24 @@ import baseAccuracySound from './scenes/baseAccuracySound?scene';
 import baseAccuracyThrow from './scenes/baseAccuracyThrow?scene';
 import baseAccuracySquirt from './scenes/baseAccuracySquirt?scene';
 import baseAccuracyDrop from './scenes/baseAccuracyDrop?scene';
-import gagFormulaSecond from './scenes/gagFormulaSecond?scene';
 import trackExp from './scenes/trackExp?scene';
-import gagFormulaThird from './scenes/gagFormulaThird?scene';
 import bonusStun from './scenes/bonusStun?scene';
 import cogDefence from './scenes/cogDefence?scene';
+import newFormula from './scenes/newFormula?scene';
+import newFormulaSecond from './scenes/newFormulaSecond?scene';
+import newFormulaThird from './scenes/newFormulaThird?scene';
+import cogDefenceMain from './scenes/cogDefenceMain?scene';
 
 
 export default makeProject({
   scenes: [
     gagFormula,
+    newFormula,
     baseAccuracyToonUp, baseAccuracyTrap, baseAccuracyLure, baseAccuracySound, baseAccuracyThrow, baseAccuracySquirt, baseAccuracyDrop,
-    gagFormulaSecond,
+    newFormulaSecond,
     trackExp,
-    gagFormulaThird,
-    cogDefence,
+    newFormulaThird,
+    cogDefence, cogDefenceMain,
     bonusStun,
   ],
 });

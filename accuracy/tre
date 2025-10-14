@@ -1,0 +1,17 @@
+attack acc =
+
+-- Toon
+base gag acc
+gag track mastery
+
+-- Cog
+cog defence
+stun
+
+-- UNM
+lure bonus
+trap bonus
+
+-- Situational
+Buffs / Debuffs
+SOS Cards
