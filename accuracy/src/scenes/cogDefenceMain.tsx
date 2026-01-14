@@ -1,11 +1,17 @@
-
 import { Camera, makeScene2D, Rect, Txt } from "@motion-canvas/2d";
-import { all, createRef, easeInOutCubic, waitFor, Reference, sequence } from "@motion-canvas/core";
+import {
+  all,
+  createRef,
+  easeInOutCubic,
+  Reference,
+  sequence,
+  waitFor,
+} from "@motion-canvas/core";
 import { CatppuccinColors } from "../components/colors";
 import { Pill } from "../components/Pill";
 import { CogDefenceTable } from "../components/Cog";
 import { AnimationPresets } from "../components/animations";
-
+import { waitForDebugger } from "node:inspector";
 
 export default makeScene2D(function* (view) {
   const cameraRef = createRef<Camera>();
@@ -15,16 +21,17 @@ export default makeScene2D(function* (view) {
   const tipOneRect = createRef<Txt>();
 
   const baseCogHelperTxt = createRef<Txt>();
-  const baseCogsPills: Array<Reference<Pill>> = []
-  const specialCogsPills: Array<Reference<Pill>> = []
+  const baseCogHelperIntoTxt = createRef<Txt>();
+  const baseCogsPills: Array<Reference<Pill>> = [];
+  const specialCogsPills: Array<Reference<Pill>> = [];
   const specialCogsPillsText = [
-    `Level 13-14: ${CogDefenceTable[13]} ⃰`,
-    `Supervisors: ${CogDefenceTable[13]} ⃰`,
-    `Level 15-20: ${CogDefenceTable[15]} ⃰`,
-    "The Boiler: PERFECT"
-  ]
+    `Level 13-14: ${CogDefenceTable[13] + 60} ⃰`,
+    `Supervisors: ${CogDefenceTable[13] + 60} ⃰`,
+    `Level 15-20: ${CogDefenceTable[15] + 60} ⃰`,
+    "The Boiler: PERFECT",
+  ];
 
-  const baseCogGelperPill = createRef<Pill>
+  const baseCogGelperPill = createRef<Pill>;
 
   for (let i = 0; i < 12; i++) {
     baseCogsPills.push(createRef<Pill>());
@@ -62,12 +69,12 @@ export default makeScene2D(function* (view) {
       {baseCogsPills.map((ref, i) => (
         <Pill
           ref={ref}
-          x={i < 6 ? -400 : 0}
+          x={i < 6 ? -200 : 200}
           y={700}
           radius={40}
           fill={CatppuccinColors.LatteBase}
-          text={`Level ${i+1}: ${CogDefenceTable[i+1]}`}
-          imgSrc={"/gear.png"}
+          text={`Level ${i + 1}: ${CogDefenceTable[i + 1]}`}
+          imgSrc="/gear.png"
         />
       ))}
       {specialCogsPills.map((ref, i) => (
@@ -78,14 +85,25 @@ export default makeScene2D(function* (view) {
           radius={40}
           fill={CatppuccinColors.LatteBase}
           text={specialCogsPillsText[i]}
-          imgSrc={"/gear.png"}
+          imgSrc="/gear.png"
         />
       ))}
       <Txt
-        ref={baseCogHelperTxt}
-        x={0}
+        ref={baseCogHelperIntoTxt}
+        x={-75}
         y={450}
-        text="Gag Track Mastery: 0%"
+        text="Gag Track Mastery:"
+        fill={CatppuccinColors.Text}
+        fontWeight={700}
+        fontFamily="twilio sans mono"
+        fontSize={60}
+        opacity={0}
+      />,
+      <Txt
+        ref={baseCogHelperTxt}
+        x={300}
+        y={450}
+        text=" 0%"
         fill={CatppuccinColors.Text}
         fontWeight={700}
         fontFamily="twilio sans mono"
@@ -116,81 +134,131 @@ export default makeScene2D(function* (view) {
           opacity={100}
         />
       </Rect>
-    </>
-  )
-
+    </>,
+  );
 
   // Load Pills
-  yield * sequence (
+  yield* sequence(
     0.2,
     ...baseCogsPills.map((p, i) => {
       const indexInColumn = i % 6;
-      const yTarget = -200 + indexInColumn * 100
+      const yTarget = -200 + indexInColumn * 100;
 
-    return all (
-      p().position.y(yTarget, 0.8),
-      p().expand(300, 1.2)
+      return all(
+        p().position.y(yTarget, 0.8),
+        p().expand(300, 1.2),
       );
     }),
-    ...specialCogsPills.map((p, i) => {
-      const indexInColumn = i % 6;
-      const yTarget = -200 + indexInColumn * 100
+  );
 
-    return all (
-      p().position.y(yTarget, 0.8),
-      p().expand(400, 1.2)
-      );
-    }),
-    tipOneRect().position.y(250, 1.2, easeInOutCubic)
-  )
+  yield* all(
+    AnimationPresets.fadeInUp(baseCogHelperTxt()),
+    AnimationPresets.fadeInUp(baseCogHelperIntoTxt()),
+  );
 
-  yield * waitFor(2)
+  for (let i = 0; i < 7; i++) {
+    yield* waitFor(2);
+    yield* highlightMasteryIncrease(baseCogsPills, baseCogHelperTxt, i * 10);
+  }
 
-  yield * sequence (0.1,
-    ...baseCogsPills.map((p) => (
-      p().opacity(0.4, 1)
-    ))
-  )
-
-  yield * waitFor(1)
-
-  yield * all(
+  yield* all(
     ...baseCogsPills.map((p) => (
       p().opacity(1, 1)
-    ))
-  )
+    )),
+  );
+  yield* waitFor(2);
 
-  yield * AnimationPresets.fadeInUp(baseCogHelperTxt())
+  yield* all(
+    ...baseCogsPills.map((p) => (
+      p().position.x(p().position.x() - 200, 1, easeInOutCubic)
+    )),
+  );
 
-  yield * waitFor(2)
+  // Load Special pills
+  yield* all(
+    ...specialCogsPills.map((p, i) => {
+      const indexInColumn = i % 6;
+      const yTarget = -200 + indexInColumn * 100;
 
-  yield * sequence (0.1,
-    ...specialCogsPills.map((p) => (
+      return all(
+        p().position.y(yTarget, 0.8),
+        p().expand(400, 1.2),
+      );
+    }),
+    tipOneRect().position.y(250, 1.2, easeInOutCubic),
+  );
+
+  yield* waitFor(2);
+
+  yield* sequence(
+    0.1,
+    ...baseCogsPills.map((p) => (
       p().opacity(0.4, 1)
-    ))
-  )
+    )),
+  );
 
-  yield * all(
-    AnimationPresets.typeText(baseCogHelperTxt, "Gag Track Mastery: 10%", 0.8),
-    ...baseCogsPills.map((p, i) => (
-      p().setText(`Level ${i+1}: ${CogDefenceTable[i+1]+10}`, 300)
-    ))
-  )
+  yield* waitFor(1);
 
-  yield * waitFor(2)
+  yield* all(
+    ...baseCogsPills.map((p) => {
+      return (
+        p().opacity(1, 1)
+      );
+    }),
+    ...baseCogsPills.map((p) => {
+      return (
+        p().setColor("#ffffff", 1)
+      );
+    }),
+  );
 
-  yield * all(
-    AnimationPresets.typeText(baseCogHelperTxt, "Gag Track Mastery: 20%", 0.8),
-    ...baseCogsPills.map((p, i) => (
-      p().setText(`Level ${i+1}: ${CogDefenceTable[i+1]+20}`, 300)
-    ))
-  )
+  yield* waitFor(1);
 
-  yield * waitFor(2)
-})
+  // Clean up
+  yield* all(
+    AnimationPresets.fadeOutUp(title()),
+    AnimationPresets.fadeOutDown(baseCogHelperIntoTxt()),
+    AnimationPresets.fadeOutDown(baseCogHelperTxt()),
+  );
 
+  yield* sequence(
+    0.2,
+    ...baseCogsPills.map((p) => {
+      return all(
+        p().position.y(700, 0.8),
+        p().expand(25, 1.2),
+      );
+    }),
+    tipOneRect().position.y(700, 1.2, easeInOutCubic),
+    ...specialCogsPills.map((p) => {
+      return all(
+        p().position.y(700, 0.8),
+        p().expand(25, 1.2),
+      );
+    }),
+  );
+});
 
-function *highlightMasteryIncrease(pills: Array<Reference<Pill>>, text: Reference<Txt>, mastery: number) {
-
-
+function* highlightMasteryIncrease(
+  pills: Array<Reference<Pill>>,
+  text: Reference<Txt>,
+  mastery: number,
+) {
+  yield* all(
+    AnimationPresets.growShrink(text()),
+    text().text(` ${mastery}%`, 0.4),
+    ...pills.map((p, i) => {
+      const defence = CogDefenceTable[i + 1];
+      const opacity = defence + mastery > 0
+        ? 1
+        : Math.min(1, Math.pow(1 - Math.abs(defence + mastery) / 100, 2.5));
+      return [
+        p().setText(`Level ${i + 1}: ${defence + mastery}`, 300),
+        p().opacity(opacity, 1),
+        ...(defence + mastery === 0
+          ? [p().setColor(CatppuccinColors.Green, 1)]
+          : []),
+      ];
+    }).flat(),
+  );
 }

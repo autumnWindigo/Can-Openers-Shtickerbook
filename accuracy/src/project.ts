@@ -15,6 +15,7 @@ import newFormula from './scenes/newFormula?scene';
 import newFormulaSecond from './scenes/newFormulaSecond?scene';
 import newFormulaThird from './scenes/newFormulaThird?scene';
 import cogDefenceMain from './scenes/cogDefenceMain?scene';
+import newFormulaFourth from './scenes/newFormulaFourth.tsx?scene';
 
 
 export default makeProject({
@@ -25,7 +26,8 @@ export default makeProject({
     newFormulaSecond,
     trackExp,
     newFormulaThird,
-    cogDefence, cogDefenceMain,
+    cogDefenceMain,
+    newFormulaFourth,
     bonusStun,
   ],
 });

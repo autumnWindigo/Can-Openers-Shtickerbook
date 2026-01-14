@@ -12,7 +12,6 @@ export default makeScene2D(function* (view) {
   const pills: Reference<Pill>[] = [];
   const gags: Gag[] = gagsJson;
   const trapGags = gags.filter((gag) => gag.GagType === "Trap");
-  const GAG_IMG_DIR = "../../public/data/";
 
   for (let i = 0; i < trapGags.length; i++) {
     pills.push(createRef<Pill>());
