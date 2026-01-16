@@ -73,6 +73,7 @@ export default makeScene2D(function* (view) {
   const title = createRef<Txt>();
   const totalAcc = createRef<Txt>();
   const tipOneRect = createRef<Rect>();
+  const tipTwoRect = createRef<Rect>();
 
   const selectedGags = [];
 
@@ -159,8 +160,30 @@ export default makeScene2D(function* (view) {
           opacity={100}
         />
       </Rect>
-
-      ,
+      <Rect
+        ref={tipTwoRect}
+        fill={CatppuccinColors.Base}
+        width={400}
+        height={200}
+        radius={40}
+        y={-350}
+        x={-500}
+        opacity={0}
+      >
+        <Txt
+          width={350}
+          margin={10}
+          text="Stun is only applied once per gag track."
+          fill={CatppuccinColors.Text}
+          fontWeight={400}
+          fontFamily="twilio sans mono"
+          fontSize={35}
+          lineHeight={45}
+          textAlign="center"
+          textWrap
+          opacity={100}
+        />
+      </Rect>
     </>,
   );
 
@@ -180,6 +203,8 @@ export default makeScene2D(function* (view) {
     ...pills.map((p, i) => p().setText(`+${stunValues[i]}%`, 125)),
   );
 
+  yield* AnimationPresets.fadeInUp(tipTwoRect());
+  yield* waitFor(1);
   yield* AnimationPresets.fadeInUp(tipOneRect());
   yield* waitFor(1);
 
@@ -239,6 +264,7 @@ export default makeScene2D(function* (view) {
   yield* all(
     ...pills.map((p, i) => exampleIndices.has(i) && p().y(-300, 1)),
     AnimationPresets.fadeOutUp(tipOneRect()),
+    AnimationPresets.fadeOutUp(tipTwoRect()),
   );
 
   const examplePills = pills.filter((_, i) => exampleIndices.has(i));
@@ -368,8 +394,6 @@ export default makeScene2D(function* (view) {
       p().position.y(600, 1, easeInOutCubic)
     )),
   );
-
-  yield* waitFor(1);
 });
 
 function formatStatsText(stats: AccuracyStats): string {

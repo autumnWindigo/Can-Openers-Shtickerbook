@@ -16,7 +16,13 @@ import newFormulaSecond from './scenes/newFormulaSecond?scene';
 import newFormulaThird from './scenes/newFormulaThird?scene';
 import cogDefenceMain from './scenes/cogDefenceMain?scene';
 import newFormulaFourth from './scenes/newFormulaFourth.tsx?scene';
-
+import newFormulaFifth from './scenes/newFormulaFifth.tsx?scene';
+import sosToons from './scenes/sosToons.tsx?scene';
+import newFormulaSix from './scenes/newFormulaSix.tsx?scene';
+import lureBonus from './scenes/lureBonus.tsx?scene';
+import newFormulaSeventh from './scenes/newFormulaSeventh.tsx?scene';
+import trapBonus from './scenes/trapBonus.tsx?scene';
+import newFormulaEigth from './scenes/newFormulaEigth.tsx?scene';
 
 export default makeProject({
   scenes: [
@@ -29,5 +35,12 @@ export default makeProject({
     cogDefenceMain,
     newFormulaFourth,
     bonusStun,
+    newFormulaFifth,
+    sosToons,
+    newFormulaSix,
+    lureBonus,
+    newFormulaSeventh,
+    trapBonus,
+    newFormulaEigth
   ],
 });

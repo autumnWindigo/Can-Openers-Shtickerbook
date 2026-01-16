@@ -71,7 +71,7 @@ export default makeScene2D(function* (view) {
 
   yield * all(
     gagTrackMasteryBox().moveTextInside(1),
-    gagTrackMasteryBox().setColor(CatppuccinColors.Green, 1),
+    gagTrackMasteryBox().setColor(CatppuccinColors.Red, 1),
     gagTrackMasteryBox().position.y(-50, 1)
   )
 

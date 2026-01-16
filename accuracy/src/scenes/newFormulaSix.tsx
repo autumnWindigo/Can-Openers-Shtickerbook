@@ -1,8 +1,7 @@
 import { Camera, makeScene2D, Txt } from "@motion-canvas/2d";
 import { all, createRef, easeInOutCubic, waitFor } from "@motion-canvas/core";
-import { CatppuccinColors } from "../components/colors";
-import { DrawnBox } from "../components/drawnBox";
-import { AnimationPresets } from "../components/animations.ts";
+import { DrawnBox } from "../components/drawnBox.tsx";
+import { CatppuccinColors } from "../components/colors.tsx";
 
 export default makeScene2D(function* (view) {
   const logo = createRef<Txt>();
@@ -12,7 +11,10 @@ export default makeScene2D(function* (view) {
   const gagTrackMasteryBox = createRef<DrawnBox>();
   const cogDefenceBox = createRef<DrawnBox>();
   const stunBox = createRef<DrawnBox>();
-  const title = createRef<Txt>();
+  const sosBox = createRef<DrawnBox>();
+  const lureBonusBox = createRef<DrawnBox>();
+  const staticTxt = createRef<Txt>();
+  const dynamicTxt = createRef<Txt>();
 
   view.add(
     <>
@@ -34,7 +36,7 @@ export default makeScene2D(function* (view) {
           width={500}
           height={200}
           x={-300}
-          y={-150}
+          y={-100}
           title="Base Gag Accuracy"
         />
         <DrawnBox
@@ -42,7 +44,7 @@ export default makeScene2D(function* (view) {
           width={500}
           height={200}
           x={-300}
-          y={0}
+          y={50}
           title="Gag Track Mastery"
         />
         <DrawnBox
@@ -50,18 +52,44 @@ export default makeScene2D(function* (view) {
           width={500}
           height={200}
           title="Cog Defence"
+          y={200}
+          x={-300}
         />
         <DrawnBox
           ref={stunBox}
           width={500}
           height={200}
           title="Stun"
+          x={300}
+          y={-100}
+        />
+        <DrawnBox
+          ref={sosBox}
+          width={500}
+          height={200}
+          title="SOS Toons"
+        />
+        <DrawnBox
+          ref={lureBonusBox}
+          width={500}
+          height={200}
+          title="Lure Bonus"
         />
         <Txt
-          ref={title}
+          ref={staticTxt}
           x={-600}
-          y={-600}
+          y={-400}
           text="Static Accuracy"
+          fill={CatppuccinColors.Text}
+          fontWeight={700}
+          fontFamily="twilio sans mono"
+          fontSize={60}
+        />
+        <Txt
+          ref={dynamicTxt}
+          x={600}
+          y={-400}
+          text="Dynamic Accuracy"
           fill={CatppuccinColors.Text}
           fontWeight={700}
           fontFamily="twilio sans mono"
@@ -76,11 +104,17 @@ export default makeScene2D(function* (view) {
     baseGagAccBox().setColor(CatppuccinColors.Peach, 0),
     gagTrackMasteryBox().drawBox(0),
     gagTrackMasteryBox().setColor(CatppuccinColors.Red, 0),
-    cogDefenceBox().moveTextAbove(0),
     cogDefenceBox().drawBox(0),
-    cameraRef().centerOn(cogDefenceBox(), 0),
+    cogDefenceBox().setColor(CatppuccinColors.Sky),
+    stunBox().drawBox(0),
+    stunBox().setColor(CatppuccinColors.Mauve),
+
+    cameraRef().centerOn(sosBox(), 0),
     cameraRef().zoom(8, 0, easeInOutCubic),
     cameraRef().rotation(180, 0, easeInOutCubic),
+
+    sosBox().drawBox(0),
+    sosBox().moveTextAbove(0),
   );
 
   yield* all(
@@ -89,32 +123,23 @@ export default makeScene2D(function* (view) {
   );
 
   yield* all(
-    cogDefenceBox().moveTextInside(1),
-    cogDefenceBox().setColor(CatppuccinColors.Sky, 1),
-    cogDefenceBox().position.y(300, 1),
+    sosBox().moveTextInside(1),
+    sosBox().setColor(CatppuccinColors.Mauve, 1),
+    sosBox().position.y(100, 1),
   );
 
-  yield* cogDefenceBox().position.x(-600, 1);
 
-  yield* waitFor(1);
+  yield* sosBox().position.x(600, 1)
 
-  // Show Static Accuracy
-  yield* all(
-    baseGagAccBox().position.y(baseGagAccBox().position.y() + 50, 1),
-    gagTrackMasteryBox().position.y(gagTrackMasteryBox().position.y() + 50, 1),
-    cogDefenceBox().position.y(cogDefenceBox().position.y() + 50, 1),
-    title().position.y(-420, 1)
-  );
+  yield *waitFor(1);
 
-  yield* waitFor(1);
-
-  yield* stunBox().drawBox(1);
+  yield * lureBonusBox().drawBox(1);
 
   yield* waitFor(1);
 
   yield* all(
-    stunBox().moveTextAbove(),
-    cameraRef().centerOn(stunBox(), 2),
+    lureBonusBox().moveTextAbove(),
+    cameraRef().centerOn(lureBonusBox(), 2),
     cameraRef().zoom(8, 2, easeInOutCubic),
     cameraRef().rotation(180, 2, easeInOutCubic),
   );

@@ -4,7 +4,7 @@ import { Pill } from "../components/Pill";
 import { all, createRef, easeInOutCubic, easeOutCubic, Reference, sequence, waitFor } from "@motion-canvas/core";
 import { Gag } from "../components/Gag";
 import gagsJson from "../data/gags.json";
-import { CatppuccinColors } from "../components/colors";
+import{ CatppuccinColors } from "../components/colors";
 import { AnimationPresets } from "../components/animations";
 
 export default makeScene2D(function* (view) {

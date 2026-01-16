@@ -19,6 +19,7 @@ export default makeScene2D(function* (view) {
   const logo = createRef<Txt>();
   const title = createRef<Txt>();
   const tipOneRect = createRef<Txt>();
+  const tipTwoRect = createRef<Txt>();
 
   const baseCogHelperTxt = createRef<Txt>();
   const baseCogHelperIntoTxt = createRef<Txt>();
@@ -133,6 +134,30 @@ export default makeScene2D(function* (view) {
           textWrap
           opacity={100}
         />
+      </Rect>{" "}
+      <Rect
+        ref={tipTwoRect}
+        fill={CatppuccinColors.Base}
+        width={1200}
+        height={600}
+        radius={40}
+        y={0}
+        x={0}
+        opacity={0}
+      >
+        <Txt
+          width={1100}
+          margin={10}
+          text="For gags which affect multiple cogs (i.e. sound or hypno) the defence of the highest level cog in battle is used."
+          fill={CatppuccinColors.Text}
+          fontWeight={500}
+          fontFamily="twilio sans mono"
+          fontSize={50}
+          lineHeight={60}
+          textAlign="center"
+          textWrap
+          opacity={100}
+        />
       </Rect>
     </>,
   );
@@ -216,7 +241,6 @@ export default makeScene2D(function* (view) {
 
   // Clean up
   yield* all(
-    AnimationPresets.fadeOutUp(title()),
     AnimationPresets.fadeOutDown(baseCogHelperIntoTxt()),
     AnimationPresets.fadeOutDown(baseCogHelperTxt()),
   );
@@ -236,6 +260,13 @@ export default makeScene2D(function* (view) {
         p().expand(25, 1.2),
       );
     }),
+  );
+
+  yield* AnimationPresets.fadeInDown(tipTwoRect());
+  yield* waitFor(1);
+  yield* all(
+    AnimationPresets.fadeOutUp(tipTwoRect()),
+    AnimationPresets.fadeOutUp(title()),
   );
 });
 
