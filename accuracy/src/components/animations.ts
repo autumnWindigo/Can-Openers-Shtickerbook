@@ -1,10 +1,16 @@
 import { Node, Txt } from "@motion-canvas/2d";
-import { all, easeOutCubic, Reference, TimingFunction, waitFor } from "@motion-canvas/core";
+import {
+  all,
+  easeOutCubic,
+  Reference,
+  TimingFunction,
+  waitFor,
+} from "@motion-canvas/core";
 
 export interface AnimationConfig {
   duration?: number;
   delay?: number;
-  easing?: TimingFunction
+  easing?: TimingFunction;
 }
 
 export class AnimationPresets {
@@ -14,7 +20,7 @@ export class AnimationPresets {
 
   public static *growShrink(node: Node, config: AnimationConfig = {}) {
     const { duration = this.DEFAULT_DURATION } = config;
-      yield * node.scale(1.2, 0.4).to(1, 0.2)
+    yield* node.scale(1.2, 0.4).to(1, 0.2);
   }
 
   public static *fadeInStill(node: Node, config: AnimationConfig = {}) {
@@ -51,8 +57,8 @@ export class AnimationPresets {
 
     yield* all(
       node.opacity(1, duration, easing),
-      node.position.y(node.position.y() + 100, duration * 0.8, easing)
-    )
+      node.position.y(node.position.y() + 100, duration * 0.8, easing),
+    );
   }
 
   public static *fadeInUp(node: Node, config: AnimationConfig = {}) {
@@ -72,8 +78,8 @@ export class AnimationPresets {
 
     yield* all(
       node.opacity(1, duration, easing),
-      node.position.y(node.position.y() - 100, duration * 0.8, easing)
-    )
+      node.position.y(node.position.y() - 100, duration * 0.8, easing),
+    );
   }
 
   public static *fadeOutUp(node: Node, config: AnimationConfig = {}) {
@@ -92,9 +98,9 @@ export class AnimationPresets {
 
     yield* all(
       node.opacity(0, duration, easing),
-      node.position.y(node.position.y() - 100, duration * 0.8, easing)
-    )
-    yield *node.position.y(node.position.y() + 100, duration * 0.01, easing)
+      node.position.y(node.position.y() - 100, duration * 0.8, easing),
+    );
+    yield* node.position.y(node.position.y() + 100, duration * 0.01, easing);
   }
 
   public static *fadeOutDown(node: Node, config: AnimationConfig = {}) {
@@ -113,9 +119,9 @@ export class AnimationPresets {
 
     yield* all(
       node.opacity(0, duration, easing),
-      node.position.y(node.position.y() + 100, duration * 0.8, easing)
-    )
-    yield *node.position.y(node.position.y() - 100, duration * 0.1, easing)
+      node.position.y(node.position.y() + 100, duration * 0.8, easing),
+    );
+    yield* node.position.y(node.position.y() - 100, duration * 0.1, easing);
   }
 
   public static *fadeOutStill(node: Node, config: AnimationConfig = {}) {
@@ -135,14 +141,34 @@ export class AnimationPresets {
     yield* node.opacity(0, duration, easing);
   }
 
-
-  public static *typeText(textRef: Reference<Txt>, content: string, duration: number = 1) {
+  public static *typeText(
+    textRef: Reference<Txt>,
+    content: string,
+    duration: number = 1,
+  ) {
     const perChar = duration / content.length;
-    textRef().text('');
+    textRef().text("");
 
     for (let i = 0; i < content.length; i++) {
       textRef().text(textRef().text() + content[i]);
-      yield * waitFor(perChar);
+      yield* waitFor(perChar);
     }
+  }
+
+  public static *pulseHighlight(
+    node: {
+      fill: any;
+    } & any,
+    highlightColor: string,
+    duration = 0.6,
+  ) {
+    const originalColor = node.fill();
+
+    yield* all(
+      AnimationPresets.growShrink(node),
+      node.fill(highlightColor, duration / 2),
+    );
+
+    yield* node.fill(originalColor, duration / 2);
   }
 }

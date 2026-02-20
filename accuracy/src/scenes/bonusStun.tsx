@@ -203,8 +203,6 @@ export default makeScene2D(function* (view) {
     ...pills.map((p, i) => p().setText(`+${stunValues[i]}%`, 125)),
   );
 
-  yield* AnimationPresets.fadeInUp(tipTwoRect());
-  yield* waitFor(1);
   yield* AnimationPresets.fadeInUp(tipOneRect());
   yield* waitFor(1);
 
@@ -264,7 +262,6 @@ export default makeScene2D(function* (view) {
   yield* all(
     ...pills.map((p, i) => exampleIndices.has(i) && p().y(-300, 1)),
     AnimationPresets.fadeOutUp(tipOneRect()),
-    AnimationPresets.fadeOutUp(tipTwoRect()),
   );
 
   const examplePills = pills.filter((_, i) => exampleIndices.has(i));

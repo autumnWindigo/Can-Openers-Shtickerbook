@@ -144,7 +144,7 @@ export default makeScene2D(function* (view) {
         ref={snarkyTip}
         x={0}
         y={400}
-        text="*It's actuall very inoptimal but that's outside the scope of this video."
+        text="*It's actually very optimal but that's outside the scope of this video."
         fill={CatppuccinColors.Text}
         fontWeight={300}
         fontFamily="twilio sans mono"
@@ -361,9 +361,23 @@ export default makeScene2D(function* (view) {
 
   yield* waitFor(1);
 
-  yield* sequence(0.2,
+  yield* all(
+    comboPills[1]().setText("+0%", 150),
+    comboPills[1]().setImage("gags/inventory_storm_cloud.png"),
+    comboPills[1]().setColor(CatppuccinColors.Pink, 1),
+    comboPills[2]().setText("+10%", 150),
+    AnimationPresets.typeText(finalAccuracyTxt, "Accuracy: 90%", 1)
+  )
+
+  yield* waitFor(1);
+
+  yield* all(
     comboPills[0]().setText("65% Base", 250),
     comboPills[0]().setImage(lureGags[3].Resource),
+    comboPills[1]().setText("+10%", 150),
+    comboPills[1]().setImage("gags/inventory_tnt.png"),
+    comboPills[1]().setColor(CatppuccinColors.Yellow, 1),
+    comboPills[2]().setText("+5%", 150),
     AnimationPresets.typeText(finalAccuracyTxt, "Accuracy: 85%", 1)
   )
 
@@ -382,14 +396,22 @@ export default makeScene2D(function* (view) {
   yield* waitFor(1);
 
   yield* all(
+    comboPills[1]().setText("+0%", 150),
+    comboPills[1]().setImage("gags/inventory_storm_cloud.png"),
+    comboPills[1]().setColor(CatppuccinColors.Pink, 1),
+    comboPills[2]().setText("+10%", 150),
+    AnimationPresets.typeText(finalAccuracyTxt, "Accuracy: 80%", 1)
+  )
+
+  yield* waitFor(1);
+
+  yield* all(
     AnimationPresets.fadeOutUp(comboDesignTxt()),
     AnimationPresets.fadeOutUp(multiTargetTxt()),
     AnimationPresets.fadeOutUp(finalAccuracyTxt()),
     AnimationPresets.fadeOutUp(tipTwoRect()),
     AnimationPresets.fadeOutUp(tipThreeRect())
   )
-
-  yield* waitFor(1);
 
   yield* sequence(0.2,
     ...pills.map(p => p().position.y(1000, 1, easeInOutCubic)),
